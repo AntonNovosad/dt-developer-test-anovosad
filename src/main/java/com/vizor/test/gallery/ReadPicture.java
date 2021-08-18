@@ -8,10 +8,11 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class ReadPicture {
 
-    public Component execute() {
+    public Component read() {
         JPanel jPanel = new JPanel();
 
         File[] files = new File("assets").listFiles(new FileFilter() {
@@ -23,12 +24,13 @@ public class ReadPicture {
                         name.endsWith(".jpg");
             }
         });
+        Arrays.sort(files);
 
         jPanel.setLayout(new GridLayout(files.length / 10, 10, 1, 1));
 
+        PictureDialog pictureDialog = new PictureDialog();
         for (File file : files) {
             try {
-                PictureDialog pictureDialog = new PictureDialog();
                 ImageIcon imageIcon = new ImageIcon(ImageIO.read(file));
                 JLabel label = new JLabel(imageIcon);
                 label.addMouseListener(new MouseAdapter() {

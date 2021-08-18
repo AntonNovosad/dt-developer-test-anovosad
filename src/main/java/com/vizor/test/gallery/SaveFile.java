@@ -9,7 +9,7 @@ import java.io.File;
 
 public class SaveFile {
 
-    public Component execute() {
+    public Component save() {
         JPanel jPanel = new JPanel();
         JButton jButton = new JButton("Add new picture");
         jButton.setFont(new Font("Verdana", Font.BOLD, 15));
@@ -35,6 +35,7 @@ public class SaveFile {
                         return ".png , .jpg";
                     }
                 });
+                File file = jFileChooser.getSelectedFile();
                 jFileChooser.showOpenDialog(jPanel);
             }
         });
